@@ -9,14 +9,14 @@ const client = new Client({
 client.on('connect', ({ me }) => console.log(`Tersambung sebagai ${me.name ?? me.id}`))
 
 client.on('command-blocked', ({ ctx, reason, retryIn }) => {
-  const guardText = {
+  const guard = {
       'group-only': 'Perintah ini hanya untuk grup.',
       'private-only': 'Perintah ini hanya lewat chat pribadi.',
       'admin-only': 'Khusus admin grup.',
       cooldown: `Sabar, tunggu ${retryIn} detik lagi.`,
     }[reason]
 
-  ctx.reply(guardText)
+  ctx.reply(guard)
 })
 
 client.on('command-error', ({ command, error, ctx }) => {
