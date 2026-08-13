@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "zaileys": "^4.9.0"
+    "zaileys": "^4.11.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

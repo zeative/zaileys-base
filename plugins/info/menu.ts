@@ -1,33 +1,28 @@
-import { definePlugin } from "zaileys";
+import { definePlugin } from 'zaileys'
 
 export default definePlugin({
-  name: "menu",
-  setup(ctx) {
-    ctx.command({
-      name: "menu",
-      aliases: ["help"],
-      description: "Daftar perintah",
-    }, async (c) => {
-      const groups = new Map<string, string[]>();
+  name: 'menu',
+  aliases: ['help'],
+  description: 'Daftar perintah',
 
-      for (const cmd of ctx.client.commands()) {
-        if (cmd.hidden === true) continue;
-        const category = cmd.category ?? "lainnya";
-        const usage = cmd.usage === undefined ? "" : ` ${cmd.usage}`;
-        groups.set(category, [
-          ...(groups.get(category) ?? []),
-          `• .${cmd.name}${usage} — ${cmd.description ?? ""}`,
-        ]);
-      }
+  command: async (ctx) => {
+    const groups = new Map<string, string[]>()
 
-      const body = [...groups]
-        .sort(([a], [b]) => a.localeCompare(b))
-        .map(([category, lines]) =>
-          `*${category.toUpperCase()}*\n${lines.sort().join("\n")}`
-        )
-        .join("\n\n");
+    for (const cmd of ctx.client.commands()) {
+      if (cmd.hidden === true) continue
+      const category = cmd.category ?? 'lainnya'
+      const usage = cmd.usage === undefined ? '' : ` ${cmd.usage}`
+      groups.set(category, [
+        ...(groups.get(category) ?? []),
+        `• .${cmd.name}${usage} — ${cmd.description ?? ''}`,
+      ])
+    }
 
-      await c.reply(`Halo ${c.senderName ?? "kamu"} 👋\n\n${body}`);
-    });
+    const body = [...groups]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([category, lines]) => `*${category.toUpperCase()}*\n${lines.sort().join('\n')}`)
+      .join('\n\n')
+
+    await ctx.reply(`Halo ${ctx.senderName ?? 'kamu'} 👋\n\n${body}`)
   },
-});
+})
