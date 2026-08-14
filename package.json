@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "zaileys": "^4.11.1"
+    "zaileys": "^4.11.2"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
