@@ -12,6 +12,11 @@ npm run dev
 
 Scan QR yang muncul, lalu kirim `.menu` ke bot.
 
+> **Jangan pakai `tsx watch` untuk file plugin.** zaileys sudah memuat ulang plugin sendiri saat
+> filenya berubah, tanpa memutus sambungan. Kalau prosesnya ikut di-restart tiap simpan, bot
+> menyambung ulang ke WhatsApp berkali-kali dan bisa berujung device-nya di-logout paksa.
+> `dev:watch` hanya untuk saat kamu mengubah `src/index.ts`.
+
 ## Menambah perintah
 
 Buat file di dalam `plugins/`. Nama plugin **adalah** nama perintahnya, dan nama foldernya jadi

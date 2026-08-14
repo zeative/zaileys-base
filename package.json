@@ -5,12 +5,13 @@
   "type": "module",
   "description": "Base WhatsApp bot for zaileys — file-based plugins, guards, and an auto-generated menu.",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx src/index.ts",
     "start": "tsx src/index.ts",
+    "dev:watch": "tsx watch src/index.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "zaileys": "^4.11.0"
+    "zaileys": "^4.11.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
