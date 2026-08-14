@@ -136,13 +136,19 @@ Untuk tipe tertentu, pakai method-nya langsung: `image`, `video`, `audio`, `stic
 | --- | --- |
 | `.menu` | Daftar perintah, disusun otomatis dari `description` |
 | `.ping` | Cek bot hidup |
+| `.ctx [field]` | Lihat isi payload pesan — reply sebuah pesan untuk membedah pesan itu |
 | `.kick @user` | Keluarkan anggota (grup, admin) |
 | `.tagall <pesan>` | Panggil semua anggota (grup, admin) |
+| `.swgc <caption>` | Jadikan media status grup — kirim dengan caption, atau reply medianya |
 | `.sticker` | Ubah gambar jadi stiker |
 | `.mail` | Buat email sementara |
 | `.inbox <alamat>` | Baca email masuk |
 
 `.menu` tidak perlu dirawat — isinya dibangun dari perintah yang terdaftar.
+
+`.ctx` berguna saat bikin plugin baru: kirim `.ctx` untuk melihat semua field yang tersedia, atau
+`.ctx senderId` untuk satu field saja. Status grup (`.swgc`) menerima teks, gambar, video, dan voice
+note — stiker tidak didukung WhatsApp.
 
 ---
 
