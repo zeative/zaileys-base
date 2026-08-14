@@ -1,19 +1,20 @@
-import { definePlugin } from "zaileys";
+import { definePlugin } from 'zaileys'
 
 export default definePlugin({
-  name: "sticker",
-  aliases: ["s"],
-  description: "Ubah gambar jadi stiker",
+  name: 'sticker',
+  aliases: ['s'],
+  description: 'Ubah gambar jadi stiker',
   cooldown: 5,
 
-  command: async (ctx) => {
-    const media = ctx.media;
-    if (media?.type !== "image") {
-      await ctx.reply(
-        "Kirim gambar dengan caption .sticker, atau balas sebuah gambar.",
-      );
-      return;
+  message: async (ctx) => {
+    /** Captioned: the picture is on this message. Replied to: it is on the quoted one. */
+    const quoted = await ctx.replied()
+    const media = ctx.media?.type === 'image' ? ctx.media : quoted?.media
+
+    if (media?.type !== 'image') {
+      await ctx.reply('Kirim gambar dengan caption .sticker, atau balas sebuah gambar.')
+      return
     }
-    await ctx.client.send(ctx.roomId!).sticker(await media.buffer());
+    await ctx.client.send(ctx.roomId!).sticker(await media.buffer())
   },
-});
+})

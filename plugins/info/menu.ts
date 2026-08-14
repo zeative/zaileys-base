@@ -5,7 +5,7 @@ export default definePlugin({
   aliases: ['help'],
   description: 'Daftar perintah',
 
-  command: async (ctx) => {
+  message: async (ctx) => {
     const groups = new Map<string, string[]>()
 
     for (const cmd of ctx.client.commands()) {

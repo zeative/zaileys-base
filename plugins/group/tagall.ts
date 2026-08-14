@@ -8,7 +8,7 @@ export default definePlugin({
   admin: true,
   cooldown: 30,
 
-  command: async (ctx) => {
+  message: async (ctx) => {
     const meta = await ctx.client.group.metadata(ctx.roomId!)
     const members = meta.participants.map((p) => p.id)
     const text = ctx.args.join(' ') || 'Kumpul!'

@@ -4,9 +4,9 @@ export default definePlugin({
   name: 'ping',
   description: 'Cek bot hidup atau tidak',
 
-  command: async (c) => {
+  message: async (ctx) => {
     const started = Date.now()
-    await c.reply('Mengukur…')
-    await c.edit(`Pong! ${Date.now() - started} ms`)
+    await ctx.reply('Mengukur…')
+    await ctx.edit(`Pong! ${Date.now() - started} ms`)
   },
 })

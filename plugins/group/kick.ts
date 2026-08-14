@@ -9,12 +9,12 @@ export default definePlugin({
   admin: true,
   cooldown: 3,
 
-  command: async (c) => {
-    if (c.mentions.length === 0) {
-      await c.reply('Tag orangnya dulu. Contoh: .kick @user')
+  message: async (ctx) => {
+    if (ctx.mentions.length === 0) {
+      await ctx.reply('Tag orangnya dulu. Contoh: .kick @user')
       return
     }
-    await c.client.group.removeMember(c.roomId!, c.mentions)
-    await c.reply(`${c.mentions.length} anggota dikeluarkan.`)
+    await ctx.client.group.removeMember(ctx.roomId!, ctx.mentions)
+    await ctx.reply(`${ctx.mentions.length} anggota dikeluarkan.`)
   },
 })
