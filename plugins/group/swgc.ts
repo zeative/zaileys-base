@@ -10,9 +10,9 @@ export default definePlugin({
 
   message: async (ctx) => {
     const source = (await ctx.replied()) ?? ctx;
-    const caption = ctx.args.join(" ");
 
-    await ctx.send().groupStatus(source, caption ? { caption } : undefined);
+    await ctx.react("⏳");
+    await ctx.send().groupStatus(source, { caption: ctx.args.join(" ") });
     await ctx.react("✅");
   },
 });
