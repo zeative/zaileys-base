@@ -15,6 +15,6 @@ export default definePlugin({
       await ctx.reply('Kirim gambar dengan caption .sticker, atau balas sebuah gambar.')
       return
     }
-    await ctx.client.send(ctx.roomId!).sticker(await media.buffer())
+    await ctx.send().sticker(await media.buffer())
   },
 })
